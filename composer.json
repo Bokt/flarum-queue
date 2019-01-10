@@ -1,0 +1,31 @@
+{
+    "name": "bokt/queue",
+    "description": "Adds Queues to Flarum",
+    "keywords": [
+        "extension",
+        "flarum", "bokt",
+        "queue", "jobs"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniël Klabbers",
+            "email": "daniel@klabbers.email",
+            "homepage": "http://luceos.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/bokt/flarum-queue/issues",
+        "source": "https://github.com/bokt/flarum-queue"
+    },
+    "require": {
+        "flarum/core": "^0.1.0-beta.8",
+        "illuminate/queue": "5.5.* || 5.7.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bokt\\Queue\\": "src/"
+        }
+    }
+}
