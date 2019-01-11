@@ -1,5 +1,5 @@
 {
-    "name": "bokt/queue",
+    "name": "bokt/flarum-queue",
     "description": "Adds Queues to Flarum",
     "keywords": [
         "extension",
