@@ -3,5 +3,5 @@
 namespace Bokt\Queue;
 
 return [
-    (new Extend\Provider())
+    (new Extend\Provider(Providers\QueueProvider::class))
 ];
