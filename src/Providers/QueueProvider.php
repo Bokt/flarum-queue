@@ -35,7 +35,7 @@ class QueueProvider extends QueueServiceProvider
             $event->addCommand(Commands\ForgetFailedCommand::class);
             $event->addCommand(Extend\ListenCommand::class);
             $event->addCommand(Commands\ListFailedCommand::class);
-            $event->addCommand(Commands\RestartCommand::class);
+            $event->addCommand(Extend\RestartCommand::class);
             $event->addCommand(Commands\RetryCommand::class);
             $event->addCommand(Extend\WorkCommand::class);
 
