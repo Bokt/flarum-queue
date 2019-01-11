@@ -16,6 +16,10 @@ class QueueProvider extends QueueServiceProvider
 {
     public function boot()
     {
+        if (!defined('ARTISAN_BINARY')) {
+            define('ARTISAN_BINARY', 'flarum');
+        }
+
         $this->configuration();
 
         $this->app->when(Listener::class)
@@ -29,7 +33,7 @@ class QueueProvider extends QueueServiceProvider
         $this->app['events']->listen(Configuring::class, function (Configuring $event) {
             $event->addCommand(Commands\FlushFailedCommand::class);
             $event->addCommand(Commands\ForgetFailedCommand::class);
-            $event->addCommand(Commands\ListenCommand::class);
+            $event->addCommand(Extend\ListenCommand::class);
             $event->addCommand(Commands\ListFailedCommand::class);
             $event->addCommand(Commands\RestartCommand::class);
             $event->addCommand(Commands\RetryCommand::class);
