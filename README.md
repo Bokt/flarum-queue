@@ -21,3 +21,13 @@ return [
   // .. your code
 ];
 ```
+
+## User instructions
+
+Make sure you add to your user instructions the need to run:
+
+```bash
+$ php flarum queue:tables
+```
+
+This will migrate the jobs and failed_jobs tables into the database.
