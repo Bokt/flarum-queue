@@ -17,7 +17,7 @@ Make sure you register the QueueProvider in your `extend.php`:
 
 ```php
 return [
-    new \Bokt\Queue\Extend\Provider(\Bokt\Queue\Providers\QueueProvider::class),
+    new \Bokt\Queue\Extend\EnableQueues,
   // .. your code
 ];
 ```
