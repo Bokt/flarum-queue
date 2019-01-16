@@ -20,7 +20,7 @@
         "source": "https://github.com/bokt/flarum-queue"
     },
     "require": {
-        "flarum/core": "^0.1.0-beta.8",
+        "flarum/core": "^0.1.0-beta.9",
         "illuminate/queue": "5.7.*"
     },
     "autoload": {
