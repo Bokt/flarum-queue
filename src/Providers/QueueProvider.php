@@ -14,6 +14,21 @@ use Bokt\Queue\Illuminate as Extend;
 
 class QueueProvider extends QueueServiceProvider
 {
+    public function register()
+    {
+        parent::register();
+
+        foreach([
+            'queue'                => [\Illuminate\Queue\QueueManager::class, \Illuminate\Contracts\Queue\Factory::class, \Illuminate\Contracts\Queue\Monitor::class],
+            'queue.connection'     => [\Illuminate\Contracts\Queue\Queue::class],
+            'queue.failer'         => [\Illuminate\Queue\Failed\FailedJobProviderInterface::class],
+        ] as $key => $aliases) {
+            foreach ($aliases as $alias) {
+                $this->app->alias($key, $alias);
+            }
+        }
+    }
+
     public function boot()
     {
         if (!defined('ARTISAN_BINARY')) {
@@ -21,14 +36,6 @@ class QueueProvider extends QueueServiceProvider
         }
 
         $this->configuration();
-
-        $this->app->when(Listener::class)
-            ->needs('$commandPath')
-            ->give($this->app->basePath());
-
-        $this->app->when(QueueManager::class)
-            ->needs('$app')
-            ->give($this->app);
 
         $this->app['events']->listen(Configuring::class, function (Configuring $event) {
             $event->addCommand(Commands\FlushFailedCommand::class);
