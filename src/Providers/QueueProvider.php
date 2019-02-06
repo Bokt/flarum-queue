@@ -87,6 +87,9 @@ class QueueProvider extends QueueServiceProvider
             'retry_after' => 90,
         ]);
 
-        $config->set('queue.failed.table', 'failed_jobs');
+        $config->set('queue.failed', [
+            'database' => 'flarum',
+            'table' => 'failed_jobs',
+        ]);
     }
 }
