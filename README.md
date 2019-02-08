@@ -24,6 +24,25 @@ return [
 
 ## User instructions
 
+By default the database driver is used. You can override this by providing a queue configuration
+in your `config.php` under the `queue` key, eg:
+
+```php
+  'database' => [
+    // ..
+  ],
+  'queue' => [
+    'driver' => 'redis',
+    'connection' => 'default',
+    'queue' => env('REDIS_QUEUE', 'default'),
+    'retry_after' => 90,
+    'block_for' => null,
+  ],
+```
+This configuration will we be bound under `queue.connections.custom` and set as the default.
+
+### Database queue
+
 Make sure you add to your user instructions the need to run:
 
 ```bash

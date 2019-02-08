@@ -11,6 +11,7 @@ use Illuminate\Queue\QueueManager;
 use Illuminate\Queue\QueueServiceProvider;
 use Illuminate\Queue\Worker;
 use Bokt\Queue\Illuminate as Extend;
+use Illuminate\Support\Arr;
 
 class QueueProvider extends QueueServiceProvider
 {
@@ -79,7 +80,15 @@ class QueueProvider extends QueueServiceProvider
         /** @var \Illuminate\Config\Repository $config */
         $config = $this->app['config'];
 
-        $config->set('queue.default', 'database');
+        $flarumConfig = Arr::get($this->app['flarum.config'], 'queue');
+
+        if ($flarumConfig) {
+            $config->set('queue.default', 'custom');
+            $config->set('queue.connections.custom', $flarumConfig);
+        } else {
+            $config->set('queue.default', 'database');
+        }
+
         $config->set('queue.connections.database', [
             'driver' => 'database',
             'table' => 'jobs',
