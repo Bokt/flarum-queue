@@ -26,9 +26,6 @@
     "autoload": {
         "psr-4": {
             "Bokt\\Queue\\": "src/"
-        },
-        "files": [
-            "src/helpers.php"
-        ]
+        }
     }
 }

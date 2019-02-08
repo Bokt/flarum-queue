@@ -22,6 +22,21 @@ return [
 ];
 ```
 
+## Developer instructions
+
+In your source code you need to resolve the `Illuminate\Queue\QueueManager` or
+its alias `queue` from the container. This allows you to push jobs into the queue.
+
+```php
+app()->make('queue')->push(new YouHadOneJob);
+```
+
+Test whether your job is queued in the jobs table and by running with the flarum binary:
+
+```bash
+$ php flarum queue:work
+```
+
 ## User instructions
 
 By default the database driver is used. You can override this by providing a queue configuration
@@ -40,6 +55,8 @@ in your `config.php` under the `queue` key, eg:
   ],
 ```
 This configuration will we be bound under `queue.connections.custom` and set as the default.
+
+> Other drivers are supported, check the [Laravel documentation](https://laravel.com/docs/5.7/queues#driver-prerequisites).
 
 ### Database queue
 
